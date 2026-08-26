@@ -1,5 +1,7 @@
 import styles from './Paginacion.module.css';
 
+// Implementé un componente facilmente escalable para manejar cualquier tipo de paginacion
+
 export default function Pagination({ pagina, totalPaginas, setPagina }) {
   return (
     <div className={styles.Container}>

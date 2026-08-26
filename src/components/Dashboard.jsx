@@ -4,28 +4,31 @@ import Pagination from './Paginacion';
 import BarraDeBusqueda from './BarraBusqueda';
 import styles from './Dashboard.module.css';
 
+// Este es el componente principal que integra el resto de componentes de react
+
 export default function Dashboard() {
   const {
     checadas,
     pagina,
     setPagina,
     totalPaginas,
-    ordenarPor,
-    direccion,
+    sortBy,
+    direction,
     cambiarOrden,
-    loading
+    loading, 
+    setCadenaBusqueda
   } = useChecadas();
 
   return (
     <div className={styles.Contenedor}>
         <h2>Control de asistencia</h2>
-        <BarraDeBusqueda/>
+        <BarraDeBusqueda onBuscar={setCadenaBusqueda} />
       {loading && <p>Esperando datos</p>}
 
       <ChecadasTable 
         checadas={checadas} 
-        ordenarPor={ordenarPor} 
-        direccion={direccion} 
+        sortBy={sortBy} 
+        direction={direction} 
         cambiarOrden={cambiarOrden} 
       />
       
