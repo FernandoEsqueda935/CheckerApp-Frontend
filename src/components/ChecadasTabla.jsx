@@ -4,7 +4,8 @@ import styles from './ChecadasTabla.module.css';
 // tambien se mapea la informacion recibida a traves del hook y pasada hasta aqui por medio de checadas
 export default function ChecadasTable({ checadas, sortBy, direction, cambiarOrden }) {
   return (
-    <table className = {styles.Tabla}>
+    <div className={styles.TablaContainer}>
+      <table className={styles.Tabla}>
       <thead>
         <tr>
           <th>Número de empleado</th>
@@ -38,13 +39,40 @@ export default function ChecadasTable({ checadas, sortBy, direction, cambiarOrde
             <td>{checada.llegada}</td>
             <td>{checada.salida}</td>
             <td>{checada.turno}</td>
-            <td>{checada.puntualidad}</td>
-            <td>
+            <td className={obtenerPuntualidad(checada.puntualidad)}>
+              {checada.puntualidad}
+            </td>
+            <td className={obtenerEstatus(checada.estatus)}>
               {checada.estatus}
             </td>
           </tr>
         ))}
       </tbody>
-    </table>
+      </table>
+    </div>
   );
+}
+
+function obtenerPuntualidad(estatus) {
+  switch (estatus) {
+    case 'Retardo':
+      return styles.inpuntual;
+    case 'A tiempo':
+      return styles.puntual;
+    default:
+      return '';
+  }
+}
+
+function obtenerEstatus(estatus) {
+  switch (estatus) {
+    case 'En Turno':
+      return styles.inpuntual;
+    case 'Finalizado':
+      return styles.puntual;
+    case 'Salida Omitida':
+      return styles.omision;
+    default:
+      return '';
+  }
 }

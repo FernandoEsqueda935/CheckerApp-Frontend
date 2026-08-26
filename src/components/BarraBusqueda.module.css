@@ -1,22 +1,47 @@
 .Buscador {
-    display: flex;
-    gap: 5px;
-    border-radius: 2px;
-    align-items: center;
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
 }
 
 .Buscador input {
-    flex: 1;
-    height: 100%;
-    font-size: 16px;
-    max-width: 300px;
-}   
+  flex: 1;
+  min-height: 36px;
+  max-width: 600px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.Buscador input::placeholder {
+  color: var(--color-muted);
+}
+
+.Buscador input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgb(120 182 201 / 18%);
+}
 
 .Buscador button {
-    background-color: #88b3e0;
-    height: 100%;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+  min-height: 36px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.Buscador button:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-1px);
+}
+
+.Buscador button:focus-visible {
+  outline: 3px solid rgb(120 182 201 / 30%);
+  outline-offset: 2px;
 }
