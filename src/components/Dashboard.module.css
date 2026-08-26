@@ -1,0 +1,15 @@
+.Contenedor {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 10px;
+  font-family: sans-serif;
+}
+
+.Contenedor h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;    
+  
+}
+

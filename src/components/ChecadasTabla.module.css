@@ -1,0 +1,20 @@
+.TablaContainer {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+}
+
+.Tabla {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.Tabla th, 
+.Tabla td {
+    padding: 8px 12px;  
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
