@@ -1,20 +1,32 @@
 .Container {
-    display: flex;
-    gap: 5px;
-    border-radius: 2px;
-    align-items: center;
-} 
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  justify-content: flex-end;
+}
 
 .Container button {
-    background-color: #88b3e0;
-    height: 100%;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+  min-height: 36px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.Container button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background: var(--color-surface-hover);
+}
+
+.Container button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
 }
 
 .Container span {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
+  color: var(--color-muted);
+  font-size: 14px;
 }

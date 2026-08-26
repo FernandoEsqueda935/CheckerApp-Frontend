@@ -1,0 +1,42 @@
+
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", sans-serif;
+
+  --font-weight: 650;
+  --color-background: #F6F6F2;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #5a7184;
+  --color-surface-hover: #64748B;
+  --color-primary: #84becf;
+  --color-primary-strong: #131718;
+  --color-primary-light: #64748B;
+  --color-text: #0F172A;
+  --color-muted: #64748B;
+  --color-border: #30414c;
+  --color-warning: #caa616;
+  --color-error: #b45050;
+  --color-success: #18a74c;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-sm: 0 8px 24px rgb(0 0 0 / 18%);
+}
+
+html,
+body,
+#root {
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+body {
+  background: var(--color-background);
+}
+
+button,
+input {
+  font: inherit;
+}
