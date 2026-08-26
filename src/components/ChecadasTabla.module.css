@@ -8,7 +8,7 @@
     width: 100%;
     border-collapse: collapse;
     white-space: nowrap;
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI Symbol", Arial, sans-serif;
     font-size: 14px;
 }
 
@@ -16,5 +16,6 @@
 .Tabla td {
     padding: 8px 12px;  
     text-align: left;
+    font-family: "Segoe UI Symbol", Arial, sans-serif;
     border-bottom: 1px solid #ddd;
 }

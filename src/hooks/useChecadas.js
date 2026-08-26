@@ -1,18 +1,22 @@
 import { useState, useEffect } from 'react';
 import { obtenerChecadas } from '../services/api';
 
+// Implemnté un hook para manejar los cambios dentro de los componentes del dashboard para saber cuando actualizar la tabla
+
 export function useChecadas() {
   const [checadas, setChecadas] = useState([]);
   const [pagina, setPagina] = useState(1);
   const [totalPaginas, setTotalPaginas] = useState(1);
-  const [ordenarPor, setOrdenarPor] = useState('fecha');
-  const [direccion, setDireccion] = useState('desc');
+  const [sortBy, setsortBy] = useState('fecha');
+  const [direction, setDireccion] = useState('desc');
   const [loading, setLoading] = useState(false);
+  const [cadenaBusqueda, setCadenaBusqueda] = useState('');
+
 
   useEffect(() => {
     const cargarDatos = async () => {
       setLoading(true);
-      const data = await obtenerChecadas(pagina, ordenarPor, direccion);
+      const data = await obtenerChecadas(pagina, sortBy, direction, cadenaBusqueda);
       if (data) {
         setChecadas(data.registros || []);
         setTotalPaginas(data.totalPaginas || 1);
@@ -20,13 +24,13 @@ export function useChecadas() {
       setLoading(false);
     };
     cargarDatos();
-  }, [pagina, ordenarPor, direccion]);
+  }, [pagina, sortBy, direction, cadenaBusqueda]);
 
   const cambiarOrden = (columna) => {
-    if (ordenarPor === columna) {
-      setDireccion(direccion === 'asc' ? 'desc' : 'asc');
+    if (sortBy === columna) {
+      setDireccion(direction === 'asc' ? 'desc' : 'asc');
     } else {
-      setOrdenarPor(columna);
+      setsortBy(columna);
       setDireccion('asc');
     }
     setPagina(1);
@@ -37,9 +41,10 @@ export function useChecadas() {
     pagina,
     setPagina,
     totalPaginas,
-    ordenarPor,
-    direccion,
+    sortBy,
+    direction,
     cambiarOrden,
-    loading
+    loading,
+    setCadenaBusqueda
   };
 }
