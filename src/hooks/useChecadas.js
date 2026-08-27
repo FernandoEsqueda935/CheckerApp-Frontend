@@ -10,21 +10,40 @@ export function useChecadas() {
   const [sortBy, setsortBy] = useState('fecha');
   const [direction, setDireccion] = useState('desc');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [cadenaBusqueda, setCadenaBusqueda] = useState('');
+  const [fechas, setFechas] = useState({ fechaInicio: '', fechaFin: '' });
 
+  const aplicarFechas = (nuevasFechas) => {
+    setFechas(nuevasFechas);
+    setPagina(1);
+  };
 
   useEffect(() => {
     const cargarDatos = async () => {
       setLoading(true);
-      const data = await obtenerChecadas(pagina, sortBy, direction, cadenaBusqueda);
-      if (data) {
+      setError('');
+
+      try {
+        const data = await obtenerChecadas(
+          pagina,
+          sortBy,
+          direction,
+          cadenaBusqueda,
+          fechas.fechaInicio,
+          fechas.fechaFin
+        );
+
         setChecadas(data.registros || []);
         setTotalPaginas(data.totalPaginas || 1);
+      } catch {
+        setError('No se pudieron cargar los registros, espere y vuelva a intentar.');
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
     cargarDatos();
-  }, [pagina, sortBy, direction, cadenaBusqueda]);
+  }, [pagina, sortBy, direction, cadenaBusqueda, fechas]);
 
   const cambiarOrden = (columna) => {
     if (sortBy === columna) {
@@ -45,6 +64,8 @@ export function useChecadas() {
     direction,
     cambiarOrden,
     loading,
-    setCadenaBusqueda
+    error,
+    setCadenaBusqueda,
+    setFechas: aplicarFechas
   };
 }
