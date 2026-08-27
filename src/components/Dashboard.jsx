@@ -15,15 +15,21 @@ export default function Dashboard() {
     sortBy,
     direction,
     cambiarOrden,
-    loading, 
-    setCadenaBusqueda
+    loading,
+    error,
+    setCadenaBusqueda,
+    setFechas
   } = useChecadas();
 
   return (
     <div className={styles.Contenedor}>
         <h2>Control de asistencia</h2>
-        <BarraDeBusqueda onBuscar={setCadenaBusqueda} />
+        <div className={styles.ContenedorFiltros}>
+          <BarraDeBusqueda onBuscar={setCadenaBusqueda} onFiltrar={setFechas} />
+
+        </div>
       {loading && <p>Esperando datos</p>}
+      {error && <p role="alert">{error}</p>}
 
       <ChecadasTable 
         checadas={checadas} 

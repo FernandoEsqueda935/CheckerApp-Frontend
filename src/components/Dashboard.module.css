@@ -23,10 +23,3 @@
   background: var(--color-surface);
   color: var(--color-muted);
 }
-
-@media (max-width: 640px) {
-  .Contenedor {
-    width: min(100% - 24px, 1440px);
-    padding: 28px 0;
-  }
-}
